@@ -1,4 +1,4 @@
-import time
+from core.coreApi import *
 
 '''
 将一些 txt格式日志转换为 csv格式，并剔除不重要的信息
