@@ -1,4 +1,6 @@
+from ..lib.AccessLogClass import  AccessLogClass
 import os
+import csv
 import time
 import datetime
 
@@ -61,3 +63,50 @@ def log_txt_to_csv(time1, time2, infile_way, outfile_way):
     # 一对一转换
     for infile, outfile in zip(load_path, output_path):
         onefile_txt_to_csv(infile, outfile)
+
+def log_csv_to_onefile_csv(time1, time2, infile_way, outfile_way, way = "None"):
+    if way == "None":
+        load_paths = timechange(time1, time2, infile_way, ".csv")
+        output_path = outfile_way + "localhost_access_log." + time1 + "-" + time2 + ".csv"
+    else:
+        load_paths = []
+        list = os.listdir(infile_way)
+        for dir1 in list:
+            load_paths.append(os.path.join(infile_way, dir1))
+        output_path = outfile_way
+    result_csv = open(output_path, 'w', newline='')
+    writer = csv.writer(result_csv)
+    writer.writerow(["Safe", "IP", "Times", "Request_method", "Request_resource", "Request_protocol", "Status", "Bytes",
+                     "Url", "Label"])
+    A = AccessLogClass()
+    for load_path in load_paths:
+        print("\" ",load_path, " \" is reading.")
+        A.set_path_csv(load_path)
+        A.load_logs()
+        for row in A.log_data:
+            writer.writerow(row)
+        A.clear()
+
+def onefile_csv_to_sortip_csv(outfile_way):
+    load_path = outfile_way
+    output_path = outfile_way[:-4] + "ip.csv"
+    result_csv = open(output_path, 'w', newline='')
+    writer = csv.writer(result_csv)
+    writer.writerow(["Safe", "IP", "Times", "Request_method", "Request_resource", "Request_protocol", "Status", "Bytes",
+                     "Url", "Label"])
+    A = AccessLogClass()
+    A.set_path_csv(load_path)
+    A.load_logs()
+    A.analysis_ip()
+    for k, v in A.ip_data.items():
+        for i in v:
+            writer.writerow(A.log_data[i])
+    A.clear()
+
+def ip_classification(time1, time2, infile_way, outfile_way):
+    # 将多个 csv 格式文件转换为一个 csv 文件
+    log_csv_to_onefile_csv(time1, time2, infile_way, outfile_way)
+    # 单个 csv 格式文件进行 ip 排序，同 ip 根据时间来排序
+    outfile_way = outfile_way + "localhost_access_log." + time1 + "-" + time2 + ".csv"
+    onefile_csv_to_sortip_csv(outfile_way)
+    print("ip_classification is finished.")
