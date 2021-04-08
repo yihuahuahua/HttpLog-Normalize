@@ -1,0 +1,40 @@
+Safe,IP,Times,Request_method,Request_resource,Request_protocol,Status,Bytes,Url,Label
+0,23.228.74.106,30/Apr/2018:00:36:13,GET,/index.do,HTTP/1.1,200,26224,-,Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)
+0,23.228.74.106,30/Apr/2018:00:36:17,GET,/toForgetPassword.do?request_locale=,HTTP/1.1,200,6322,-,Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)
+0,39.104.80.194,30/Apr/2018:01:29:20,GET,/index.do,HTTP/1.1,200,26312,-,curl/7.47.0
+0,222.214.218.210,30/Apr/2018:02:39:50,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,222.214.218.210,30/Apr/2018:02:39:50,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,222.214.218.210,30/Apr/2018:02:39:50,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,222.214.218.210,30/Apr/2018:02:39:50,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,115.236.45.238,30/Apr/2018:05:54:23,GET,/index.do,HTTP/1.1,200,26312,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,115.236.45.238,30/Apr/2018:05:55:02,GET,/index.do?map=*,HTTP/1.1,200,26318,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,124.160.26.190,30/Apr/2018:06:20:40,GET,/index.do,HTTP/1.1,200,26312,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,115.236.45.238,30/Apr/2018:06:22:34,GET,/index.do?map=*,HTTP/1.1,200,26318,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,122.226.150.246,30/Apr/2018:07:54:25,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:07:54:25,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:07:54:25,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,122.226.150.246,30/Apr/2018:07:54:25,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,71.6.135.131,30/Apr/2018:08:28:20,GET,/index.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+0,115.239.212.8,30/Apr/2018:08:53:34,GET,/index.do,HTTP/1.1,200,26204,-,Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
+0,122.226.150.246,30/Apr/2018:11:31:50,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:11:31:50,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:11:31:50,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,122.226.150.246,30/Apr/2018:11:31:50,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,197.237.24.109,30/Apr/2018:12:12:57,GET,/index.do,HTTP/1.1,200,26881,http://xfinity.net.cn,Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Exabot-Thumbnails)
+0,39.104.80.85,30/Apr/2018:13:16:07,GET,/index.do,HTTP/1.1,200,26312,-,curl/7.47.0
+0,122.226.150.246,30/Apr/2018:14:01:26,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:14:01:26,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,122.226.150.246,30/Apr/2018:14:01:26,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,122.226.150.246,30/Apr/2018:14:01:26,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"
+0,5.189.150.18,30/Apr/2018:14:50:23,GET,/index.do,HTTP/1.1,200,26312,-,libwww-perl/6.33
+0,210.12.183.167,30/Apr/2018:16:26:18,GET,/index.do,HTTP/1.1,200,26224,http://59.79.125.218:8080,Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)
+0,139.162.111.98,30/Apr/2018:16:32:43,GET,/index.do,HTTP/1.1,200,26312,http://59.79.125.218:8080/,"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+0,210.12.183.167,30/Apr/2018:17:10:14,GET,/index.do,HTTP/1.1,200,26224,http://202.127.7.218:8080,Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)
+0,58.69.155.123,30/Apr/2018:17:20:33,GET,/index.do,HTTP/1.1,200,26224,-,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"
+0,60.191.52.254,30/Apr/2018:18:02:12,GET,/index.do,HTTP/1.1,200,26224,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+0,115.236.45.238,30/Apr/2018:21:41:21,GET,/index.do,HTTP/1.1,200,26312,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,115.236.45.238,30/Apr/2018:21:41:55,GET,/index.do?map=*,HTTP/1.1,200,26318,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,124.160.26.190,30/Apr/2018:23:07:54,GET,/index.do,HTTP/1.1,200,26312,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,115.236.45.238,30/Apr/2018:23:08:34,GET,/index.do?map=*,HTTP/1.1,200,26318,-,=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+0,101.254.149.128,30/Apr/2018:23:30:14,GET,/index.do,HTTP/1.1,200,26312,-,User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705
+0,101.254.149.128,30/Apr/2018:23:30:14,GET,/login.do,HTTP/1.1,200,26312,-,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"

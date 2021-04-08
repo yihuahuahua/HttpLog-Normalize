@@ -1,9 +1,13 @@
-from ..lib.AccessLogClass import  AccessLogClass
+
 import os
+import sys
+sys.path.append('../')
+sys.path.append('../../')
+sys.path.append('../../../')
 import csv
 import time
 import datetime
-
+from lib.AccessLogClass import  AccessLogClass
 
 def timechange(time1, time2, prefix_name, suffix_name = ".txt"):
     # 判断日期是否合法
@@ -110,3 +114,57 @@ def ip_classification(time1, time2, infile_way, outfile_way):
     outfile_way = outfile_way + "localhost_access_log." + time1 + "-" + time2 + ".csv"
     onefile_csv_to_sortip_csv(outfile_way)
     print("ip_classification is finished.")
+
+def wash_log_usrful(request_resource):
+    if ((request_resource[-4:] == ".css") or (request_resource[-4:] == ".png") or (request_resource[-3:] == ".js") or
+        (request_resource[-4:] == ".gif") or (request_resource[-4:] == ".jpg") or (request_resource[-4:] == ".ico") or
+        (request_resource == "\\") or (request_resource == "/loadjs.htm") or (request_resource == "/image.jsp")):
+        return 0
+    return 1
+
+def wash_log_GET(request_method):
+    if request_method == "GET":
+        return 1
+    return 0
+
+spider_data = []
+with open("../../log/spider_log/spider_log.txt") as f:
+    spider_data = f.readlines()
+def wash_log_nospider(label):
+    for ii in spider_data:
+        if label in ii or ii[:-1] in label:
+            return 0
+    return 1
+
+def wash_log_200(status):
+    if status == "-":
+        return 0
+    if int(status) > 299:
+        return 0
+    return 1
+
+def wash_onelog(infile_path, outfile_path):
+    # 写入 csv 之前的一些必要操作
+    result_csv = open(outfile_path, 'w', newline='')
+    writer = csv.writer(result_csv)
+    # 向 csv 写入表头
+    writer.writerow(["Safe", "IP", "Times", "Request_method", "Request_resource", "Request_protocol", "Status", "Bytes",
+                     "Url", "Label"])
+    with open(infile_path, 'r') as f:
+        # 读取初始数据并输出
+        # 将 csv 不支持的字符进行转换
+        reader = csv.reader(_.replace('\x00', '') for _ in f)
+        result = list(reader)
+
+        for row in result[1:]:
+            if (wash_log_GET(row[3])) and (wash_log_usrful(row[4])) and (wash_log_200(row[6])) and \
+                (wash_log_nospider(row[9])):
+                writer.writerow(row)
+    result_csv.close()
+
+def wash_log(time1, time2, infile_way, outfile_way):
+    load_path = timechange(time1, time2, infile_way, ".csv")
+    output_path = timechange(time1, time2, outfile_way, ".csv")
+    # 一对一转换
+    for infile, outfile in zip(load_path, output_path):
+        wash_onelog(infile, outfile)
