@@ -1,13 +1,11 @@
 
 import os
 import sys
-sys.path.append('../')
-sys.path.append('../../')
-sys.path.append('../../../')
 import csv
 import time
 import datetime
-from lib.AccessLogClass import  AccessLogClass
+from lib.AccessLogClass import AccessLogClass
+from lib.AttackLogClass import AttackLogClass
 
 def timechange(time1, time2, prefix_name, suffix_name = ".txt"):
     # 判断日期是否合法
@@ -91,9 +89,12 @@ def log_csv_to_onefile_csv(time1, time2, infile_way, outfile_way, way = "None"):
             writer.writerow(row)
         A.clear()
 
-def onefile_csv_to_sortip_csv(outfile_way):
-    load_path = outfile_way
-    output_path = outfile_way[:-4] + "ip.csv"
+def merge_csv_log(time1, time2, infile_way, outfile_way):
+    log_csv_to_onefile_csv(time1, time2, infile_way, outfile_way)
+
+def onefile_csv_to_sortip_csv(infile_way, outfile_way):
+    load_path = infile_way
+    output_path = outfile_way[:-4] + "sortip.csv"
     result_csv = open(output_path, 'w', newline='')
     writer = csv.writer(result_csv)
     writer.writerow(["Safe", "IP", "Times", "Request_method", "Request_resource", "Request_protocol", "Status", "Bytes",
@@ -107,13 +108,12 @@ def onefile_csv_to_sortip_csv(outfile_way):
             writer.writerow(A.log_data[i])
     A.clear()
 
-def ip_classification(time1, time2, infile_way, outfile_way):
-    # 将多个 csv 格式文件转换为一个 csv 文件
-    log_csv_to_onefile_csv(time1, time2, infile_way, outfile_way)
-    # 单个 csv 格式文件进行 ip 排序，同 ip 根据时间来排序
-    outfile_way = outfile_way + "localhost_access_log." + time1 + "-" + time2 + ".csv"
-    onefile_csv_to_sortip_csv(outfile_way)
-    print("ip_classification is finished.")
+def sort_csv_log(infile_way, outfile_way):
+    files = os.listdir(infile_way)
+    for file in files:
+        infile_path = infile_way + file
+        outfile_path = outfile_way + file
+        onefile_csv_to_sortip_csv(infile_path, outfile_path)
 
 def wash_log_usrful(request_resource):
     if ((request_resource[-4:] == ".css") or (request_resource[-4:] == ".png") or (request_resource[-3:] == ".js") or
@@ -128,7 +128,7 @@ def wash_log_GET(request_method):
     return 0
 
 spider_data = []
-with open("../../log/spider_log/spider_log.txt") as f:
+with open("../log/spider_log/spider_log.txt") as f:
     spider_data = f.readlines()
 def wash_log_nospider(label):
     for ii in spider_data:
@@ -168,3 +168,67 @@ def wash_log(time1, time2, infile_way, outfile_way):
     # 一对一转换
     for infile, outfile in zip(load_path, output_path):
         wash_onelog(infile, outfile)
+
+def get_attack_methods():
+    attack_methods = {}
+    with open("../log/txt_attack_methods_log/attack_method.txt", 'r', encoding='UTF-8') as f:
+        methods = f.readlines()
+        methodnum = 0
+        for method in methods:
+            #print(method)
+            methodnum = methodnum + 1
+            attack_methods[method[:-1]] = methodnum
+    return attack_methods
+
+def oneatkfile_csv_to_sortip_csv(infile_way, outfile_way):
+    loadpath = infile_way
+    outputpath = outfile_way[:-4] + "ip.csv"
+    result_csv = open(outputpath, 'w', newline='')
+    writer = csv.writer(result_csv)
+    writer.writerow(["Attack_method", "IP", "Times", "URL", "Status"])
+    A = AttackLogClass()
+    A.get_path_csv(loadpath)
+    A.loadlogs()
+    A.analysis_ip()
+    for k, v in A.ip_data.items():
+        for i in v:
+            writer.writerow(A.log_data[i])
+    A.clear()
+
+# 将标签文件转换为 csv 格式
+def onewaflog_txt_to_csv(infile_path, outfile_path):
+    # 获取攻击方法表 dict
+    attack_methods = get_attack_methods()
+    # 写入 csv 之前的一些必要操作
+    result_csv = open(outfile_path, 'w', newline='')
+    writer = csv.writer(result_csv)
+    # 向 csv 写入表头
+    writer.writerow(["Attack_method", "IP", "Times", "URL", "Status"])
+    with open(infile_path, encoding='utf-8') as f:
+        data = f.readlines()
+        for row in data:
+            # 将数据按照制表符分割
+            row_elements = row.split("\t")
+            # 将时间格式转化为 accesslog 格式
+            timeArray = time.strptime(row_elements[4], "%Y-%m-%d %H:%M:%S")
+            row_elements[4] = time.strftime("%d/%b/%Y:%H:%M:%S", timeArray)
+            # 去掉URL中的转义字符
+            row_elements[3] = row_elements[3].replace('amp;', '')
+            # 写入相关数据
+            writer.writerow([attack_methods[row_elements[1]], row_elements[2],
+                             row_elements[4], row_elements[3], row_elements[5]])
+    result_csv.close()
+
+def waflog_txt_to_csv(infile_way, outfile_way):
+    files = os.listdir(infile_way)
+    for file in files:
+        infile_path = infile_way + file
+        outfile_path = outfile_way + file[:-4] + '.csv'
+        onewaflog_txt_to_csv(infile_path, outfile_path)
+
+def waflog_csv_to_sortip_csv(infile_way, outfile_way):
+    files = os.listdir(infile_way)
+    for file in files:
+        infile_path = infile_way + file
+        outfile_path = outfile_way + file[:-4] + '.csv'
+        oneatkfile_csv_to_sortip_csv(infile_path, outfile_path)
